@@ -8,10 +8,6 @@ const userschema=mongoose.Schema({
         type:String,
         required:true
     },
-    currentstatus:{
-         type:String,
-         required:true
-    },
     currentjob:{
          type:String,
          required:true

@@ -1,12 +1,11 @@
 const profile=require('../models/profilemodel')
 // create
 const createprofile=async(req,res)=>{
-const{name,email,currentstatus,currentjob,currentsalary,religeon}=req.body
+const{name,email,currentjob,currentsalary,religeon}=req.body
 try {
     const newdata= await new profile({
         name,
         email,
-        currentstatus,
         currentjob,
         currentsalary,
         religion
@@ -27,12 +26,35 @@ const getprofile=async(req,res)=>{
     }
 }
 // update
-const updateprofile=async()=>{
+const updateprofile=async(req,res)=>{
     try {
-        const{id}=req.params
-        const updatedata=createprofile                                                             
+    const {id}=req.params
+    const updateprofile=await profile.findByIdAndUpdate(id,req.body,{new:true})
+    if(!updateprofile){
+        res.status(400).json({msg:"profile not found"})
+    }
+    else{
+        res.status(200).json({msg:"update sucessfull"},{data:updateprofile})
+    }
     } catch (error) {
+        res.status(500).json({msg:"server error",e:error.message})
+        console.log(error);
         
     }
 }
-module.exports={createprofile,getprofile}
+// delete
+const deleteprofile=async(req,res)=>{
+     const {id}=req.params
+    const deleteprofile=await profile.findByIdAndDelete(id)
+    try {
+        if(!deleteprofile){
+            res.status(400).json({msg:"profile not found"})
+        }
+        else{
+            res.status(200).json({msg:"deleted sucessfully"},{data:deleteprofile})
+        }
+    } catch (error) {
+        res.status(500).json({msg:"server error",e:error.message})
+    }
+}
+module.exports={createprofile,getprofile,updateprofile,deleteprofile}
