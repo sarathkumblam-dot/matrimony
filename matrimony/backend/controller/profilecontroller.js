@@ -1,7 +1,8 @@
 const profile=require('../models/profilemodel')
 // create
 const createprofile=async(req,res)=>{
-const{name,email,currentjob,currentsalary,religeon}=req.body
+const{ email,password,age,gender,religion,caste,education,profession,salary,location,about,images,
+        premium}=req.body
 try {
     const newdata= await new profile({
         name:req.user.name,
