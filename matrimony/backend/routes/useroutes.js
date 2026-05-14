@@ -1,6 +1,10 @@
 const express=require('express')
 const router=express.Router()
 const usercontroller=require('../controller/usercontroller')
+
+// create user
 router.post('/createuser',usercontroller.registeruser)
-router.get('/loginuser',usercontroller.loginuser)
+// login user
+router.post('/loginuser',usercontroller.loginuser)
+
 module.exports=router

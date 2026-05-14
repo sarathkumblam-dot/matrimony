@@ -1,6 +1,8 @@
-const user = require('../models/usermodel')
+
 const User=require('../models/usermodel')
 const bcrypt=require('bcrypt')
+const jwt=require('jsonwebtoken')
+
 const saltrounds=10
 const registeruser=async(req,res)=>{
     const {name,emailid,password,gender}=req.body
@@ -28,13 +30,16 @@ const loginuser=async(req,res)=>{
         if(!user){
             return res.status(404).json({msg:"not registered,please register"})
         }
-        const matchpassword=await bcrypt.compare(password,User.password)
+        const matchpassword=await bcrypt.compare(password,user.password)
+       
         if(!matchpassword){
             return res.status(404).json({msg:"invalid password"})
         }
-        res.status(200).json({msg:"loged in sucessfull"})
+         const token=jwt.sign({id:user._id,name:user.name},process.env.secret_key,{expiresIn:'5h'})
+        res.status(200).json({msg:"log in sucessfull",token:token})
     } catch (error) {
         res.status(500).json({msg:"server error"})
+        console.log(error)
     }
 }
 module.exports={registeruser,loginuser}

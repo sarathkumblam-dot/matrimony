@@ -1,0 +1,32 @@
+.navbar{
+  display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 8px;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+  width: 25vh;
+}
+.login{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.login button{
+  padding: 5px;
+  border-radius: 10px;
+  width: 66px;
+  border: 3px solid orange;
+  background: white;
+  color: orange;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login button:hover{
+  background: orange;
+  color: white;
+}
+.login p{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

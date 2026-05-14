@@ -1,0 +1,107 @@
+.background{
+    background-image: url(./assets/main_img.jpeg);
+    background-size: cover;
+    height: 89vh;
+    background-position: center;
+    background-repeat: no-repeat;                           
+    background-size: cover;
+}
+
+/* MatrimonyProfile.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.main-container {
+  height: 89vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 400px;
+  padding: 40px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  color: white;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: green;
+}
+
+.form-container p {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 15px;
+  color: orange;
+}
+
+.input-box {
+  margin-bottom: 18px;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: black;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+}
+
+.gender-box {
+  margin-bottom: 20px;
+}
+
+.gender-box label {
+  font-size: 15px;
+  color: black;
+}
+
+.radio-group {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+
+  background-color: white;
+  color: black;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff4d6d;
+  color: white;
+}

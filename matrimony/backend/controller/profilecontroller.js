@@ -1,10 +1,10 @@
 const profile=require('../models/profilemodel')
 // create
 const createprofile=async(req,res)=>{
-const{name,email,currentjob,currentsalary,religeon}=req.body
+const{email,currentjob,currentsalary,religion}=req.body
 try {
     const newdata= await new profile({
-        name,
+        name:req.user.name,
         email,
         currentjob,
         currentsalary,
@@ -14,6 +14,8 @@ try {
     res.status(200).json({msg:"created sucessfully",data:newdata})
 } catch (error) {
     res.status(500).json({msg:"server error"})
+    console.log(error);
+    
 }
 }
 // read
