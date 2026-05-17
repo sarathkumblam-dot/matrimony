@@ -8,12 +8,12 @@
 .logo img {
   width: 25vh;
 }
-.login{
+.auth{
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.login button{
+.auth button{
   padding: 5px;
   border-radius: 10px;
   width: 66px;
@@ -23,10 +23,10 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.login button:hover{
+.auth button:hover{
   background: orange;
   color: white;
 }
-.login p{
+.auth p{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

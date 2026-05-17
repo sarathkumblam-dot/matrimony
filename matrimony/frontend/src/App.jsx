@@ -1,10 +1,9 @@
-import Signup from "./components/signup/signup"
+
+import Homepage from "./components/routes/Homepage";
 export default function App() {
 
   return (
-  <Signup/>
-
-
+  <Homepage/>
   );
 }
      
