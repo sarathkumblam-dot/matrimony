@@ -1,4 +1,5 @@
 const profile=require('../models/profilemodel')
+
 // create
 const createprofile=async(req,res)=>{
 const{ password,age,religion,caste,education,profession,salary,location,about,images,
