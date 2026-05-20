@@ -1,5 +1,6 @@
 import './signup.css'
 import Navbarloginsignup from "../navbarlogin&signup"
+import { useLocation,Link } from 'react-router-dom'
 export default function Signup(){
     return(
       <>
@@ -43,9 +44,9 @@ export default function Signup(){
             </div>
           </div>
 
-          <button className='btn-create' type="submit">
+         <Link to="/card"> <button className='btn-create' type="submit">
             Create Profile
-          </button>
+          </button> </Link>
 
         </form>
       </div>

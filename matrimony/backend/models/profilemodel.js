@@ -8,7 +8,11 @@ const profileschema=new mongoose.Schema({
 
   age: Number,
 
-  gender: String,
+  gender:{
+   type:String,
+   required:true,
+   enum:['male','female']
+    },
 
   religion: String,
 
@@ -34,3 +38,6 @@ const profileschema=new mongoose.Schema({
 
 const profile=mongoose.model('profile',profileschema)
 module.exports=profile
+
+
+  

@@ -6,7 +6,11 @@ connectdb()
 const profileroute=require('../backend/routes/profileroute')
 const userouter=require('./routes/useroutes')
 const cors=require('cors')
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5174",
+    credentials: true
+}))
+
 
 app.use(express.json())
 app.use('/profile',profileroute)
