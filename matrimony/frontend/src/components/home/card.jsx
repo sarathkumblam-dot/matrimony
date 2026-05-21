@@ -1,6 +1,6 @@
 import React from 'react'
 import Getblogs from '../blogs/getblogs'
-const card=()=> {
+const Card=()=> {
   return (
     <>
       <Getblogs/>
@@ -8,4 +8,4 @@ const card=()=> {
   )
 }
 
-export default card
+export default Card

@@ -7,10 +7,10 @@ const authmiddleware=require('../middleware/middleware')
 // create profile//authorization
 router.post('/createprofile',authmiddleware,profilecontroller.createprofile)
 // read profile
-router.get('/getprofile',authmiddleware,profilecontroller.getprofile)
+router.get('/getprofile',profilecontroller.getprofile)
 // update profile
-router.put('/updateprofile/:id',authmiddleware,profilecontroller.updateprofile)
+router.put('/updateprofile/:id',profilecontroller.updateprofile)
 // delete profile
-router.delete('/deleteprofile/:id',authmiddleware,profilecontroller.deleteprofile)
+router.delete('/deleteprofile/:id',profilecontroller.deleteprofile)
 
 module.exports=router
