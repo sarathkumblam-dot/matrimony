@@ -36,6 +36,12 @@ const loginuser=async(req,res)=>{
             return res.status(404).json({msg:"invalid password"})
         }
          const token=jwt.sign({id:user._id,name:user.name,emailid:user.emailid},process.env.secret_key,{expiresIn:'5h'})
+         res.cookie("token",token,{
+                    httpOnly:true,
+                    secure:true,
+                    sameSite:"strict",
+                    maxAge:24*60*60*1000
+                  })
         res.status(200).json({msg:"log in sucessfull",token:token})
     } catch (error) {
         res.status(500).json({msg:"server error"})

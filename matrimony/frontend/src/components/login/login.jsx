@@ -1,8 +1,35 @@
 import React from "react";
 import "./login.css";
 import Navbarloginsignup from "../navbarlogin&signup";
+import { useState } from "react";
+import { LoginUser } from "../../api/api";
 
-function Login() {
+const Login = ()=>{
+  const [form,setform]=useState({
+    emailid:"",
+    password:"",
+  });
+  const handlechange=(e)=>{
+    setform({
+      ...form,
+      [e.target.name]:e.target.value,
+    })
+  }
+  const hamdlesubmit=async(e)=>{
+    e.preventDefault();
+    try {
+      const res = await LoginUser(form);
+      if(res.success){
+        console.log("login successful");
+      }
+      else{
+        console.log(error);
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
   return (
     <>
     <Navbarloginsignup/>
@@ -16,13 +43,17 @@ function Login() {
           <p>Login to continue your journey</p>
         </div>
 
-        <form className="login-form">
+        <form className="login-form" 
+        action="" onSubmit={hamdlesubmit}>
 
           <div className="input-group">
             <label>Email Address</label>
             <input
               type="email"
               placeholder="Enter your email"
+              name="emailid"
+              value={form.emailid}
+              onChange={handlechange}
             />
           </div>
 
@@ -31,6 +62,9 @@ function Login() {
             <input
               type="password"
               placeholder="Enter your password"
+              name="password"
+              value={form.password}
+              onChange={handlechange}
             />
           </div>
 

@@ -44,7 +44,7 @@ export default function Signup(){
             </div>
           </div>
 
-         <Link to="/card"> <button className='btn-create' type="submit">
+         <Link to="/grid"> <button className='btn-create' type="submit">
             Create Profile
           </button> </Link>
 

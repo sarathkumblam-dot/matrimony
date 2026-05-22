@@ -8,18 +8,18 @@ export const getdata=async()=>{
 }
 
 // login
-// export const LoginUser = async (postdata) => {
+export const LoginUser = async (postdata) => {
 
-//     const res = await fetch(`${baseurl}/user/loginuser`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         credentials: "include",
+    const res = await fetch(`${baseurl}/user/loginuser`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
 
-//         body: JSON.stringify(postdata)
-//     })
+        body: JSON.stringify(postdata)
+    })
 
-//     return res.json()
-// }
+    return res.json()
+}
 
