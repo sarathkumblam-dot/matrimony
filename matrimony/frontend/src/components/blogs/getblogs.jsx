@@ -24,13 +24,13 @@ const Getblogs=()=> {
         <p>{i.email}</p>
         <p>{i.password}</p>
         <p>{i.age}</p>
-        {/* <p>{i.gender}</p>
+        <p>{i.gender}</p>
         <p>{i.religion}</p>
         <p>{i.caste}</p> 
         <p>{i.education}</p>
         <p>{i.salary}</p>
         <p>{i.location}</p>
-        <p>{i.about}</p>  */}
+        <p>{i.about}</p> 
         </div>
         
         ))}

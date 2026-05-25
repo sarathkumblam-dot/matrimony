@@ -16,10 +16,13 @@ export const LoginUser = async (postdata) => {
             "Content-Type": "application/json"
         },
         credentials: "include",
-
         body: JSON.stringify(postdata)
     })
+     console.log("login response:");
+     
+    const data = await res.json();
 
-    return res.json()
+    return data;
+    // return res.json()
 }
 

@@ -3,8 +3,10 @@ import "./login.css";
 import Navbarloginsignup from "../navbarlogin&signup";
 import { useState } from "react";
 import { LoginUser } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
+  const navigate= useNavigate();
   const [form,setform]=useState({
     emailid:"",
     password:"",
@@ -15,21 +17,23 @@ const Login = ()=>{
       [e.target.name]:e.target.value,
     })
   }
-  const hamdlesubmit=async(e)=>{
+  const handlesubmit=async(e)=>{
     e.preventDefault();
     try {
       const res = await LoginUser(form);
+      console.log(res);
+      
       if(res.success){
         console.log("login successful");
+        navigate("/grid")
       }
       else{
-        console.log(error);
+        console.log("error");
       }
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   }
-
   return (
     <>
     <Navbarloginsignup/>
@@ -44,7 +48,7 @@ const Login = ()=>{
         </div>
 
         <form className="login-form" 
-        action="" onSubmit={hamdlesubmit}>
+        action="" onSubmit={handlesubmit}>
 
           <div className="input-group">
             <label>Email Address</label>
