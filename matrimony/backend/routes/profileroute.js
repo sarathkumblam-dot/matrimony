@@ -11,6 +11,7 @@ router.get('/getprofile',profilecontroller.getprofile)
 // update profile
 router.put('/updateprofile/:id',profilecontroller.updateprofile)
 // delete profile
-router.delete('/deleteprofile/:id',profilecontroller.deleteprofile)
+router.delete('/deleteprofile/:id',profilecontroller.deleteprofile);
+// router.delete("/deleteprofile/:id", deleteProfile);
 
 module.exports=router

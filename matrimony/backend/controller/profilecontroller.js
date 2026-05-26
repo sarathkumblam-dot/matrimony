@@ -1,17 +1,16 @@
+const { error } = require('winston')
 const profile=require('../models/profilemodel')
 
 // create
 const createprofile=async(req,res)=>{
-const{name, password,age,religion,caste,education,profession,salary,location,about,images,
-        premium}=req.body
+const{password,age,religion,caste,education,profession,salary,location,about,images, premium,gender}=req.body
 try {
     const newdata= await new profile({
-        // name:req.user.name,
-        name,
+        name:req.user.name,
         email:req.user.emailid,
         password,
         age,
-        gender:req.user.gender,
+        gender,
         religion,
         caste,
         education,
@@ -25,7 +24,7 @@ try {
     await newdata.save()
     res.status(200).json({msg:"created sucessfully",data:newdata})
 } catch (error) {
-    res.status(500).json({msg:"server error"})
+    res.status(500).json({msg:"server error",e:error.message})
     console.log(error);
     
 }
@@ -58,17 +57,57 @@ const updateprofile=async(req,res)=>{
 }
 // delete
 const deleteprofile=async(req,res)=>{
-     const {id}=req.params
-    const deleteprofile=await profile.findByIdAndDelete(id)
+     
     try {
-        if(!deleteprofile){
+        const {id}=req.params
+        const deletedprofile=await profile.findByIdAndDelete(id)
+        if(!deletedprofile){
             res.status(400).json({msg:"profile not found"})
+          
+            console.log(error);
+            console.log(id, id.length)
+            
         }
         else{
-            res.status(200).json({msg:"deleted sucessfully"},{data:deleteprofile})
+            res.status(200).json({msg:"deleted sucessfully"},{data:deletedprofile})
         }
     } catch (error) {
         res.status(500).json({msg:"server error",e:error.message})
+        console.log(error);
+        
     }
 }
+
+// const deleteProfile = async (req, res) => {
+
+//     try {
+
+//         const { id } = req.params;
+
+//         const deletedProfile = await Profile.findByIdAndDelete(id);
+
+//         if (!deletedProfile) {
+//             return res.status(400).json({
+//                 success: false,
+//                 message: "Profile not found"
+//             });
+//         }
+
+//         res.status(200).json({
+//             success: true,
+//             message: "Deleted successfully"
+//         });
+
+//     } catch (error) {
+
+//         console.log(error);
+
+//         res.status(500).json({
+//             success: false,
+//             error: error.message
+//         });
+//     }
+// };
+
+
 module.exports={createprofile,getprofile,updateprofile,deleteprofile}

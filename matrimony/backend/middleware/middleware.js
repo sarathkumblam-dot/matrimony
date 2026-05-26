@@ -3,7 +3,7 @@ const authmiddleware=async(req,res,next)=>{
   //  const header=req.header('Authorization')
   //  if(!header){
   //    return res.status(400).json({msg:"please login to continue"})
-  //  }
+  // }
   try {
     // const token=header.split(" ")[1]
     const token = req.cookies.token

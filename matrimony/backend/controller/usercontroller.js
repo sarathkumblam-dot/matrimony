@@ -35,7 +35,7 @@ const loginuser=async(req,res)=>{
         const matchpassword=await bcrypt.compare(password,user.password)
        
         if(!matchpassword){
-            return res.status(404).json({msg:"invalid password"})
+            return res.status(401).json({msg:"invalid password"})
               
         }
          const token=jwt.sign({id:user._id,name:user.name,emailid:user.emailid},process.env.SECRET_KEY,{expiresIn:'5h'})

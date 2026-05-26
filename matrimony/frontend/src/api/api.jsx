@@ -23,6 +23,13 @@ export const LoginUser = async (postdata) => {
     const data = await res.json();
 
     return data;
-    // return res.json()
+
 }
 
+export const deletepost = async(id)=>{
+    const res = await fetch(`${baseurl}/profile/deleteprofile/${id}`,{
+        method:"DELETE",
+        credentials:"include",
+    })
+    return res.json()
+}
