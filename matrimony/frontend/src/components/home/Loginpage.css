@@ -69,7 +69,11 @@ body {
 .logout-btn:hover {
   background: #e63956;
 }
-
+.logout{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 /* Hero Section */
 .hero-section {
   width: 100%;

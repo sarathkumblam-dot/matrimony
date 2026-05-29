@@ -3,7 +3,7 @@ import Navbarloginsignup from "../navbarlogin&signup"
 import { useNavigate } from 'react-router-dom'
 import { useContext,useState } from 'react'
 import { AuthProvider } from '../context/Authcontext'
-import { CreateUser } from "../../Api/api";
+import { CreateUser } from "../../api/api";
 
  const Signup=()=>{
   const {setuser} = useContext(AuthProvider)
@@ -29,15 +29,14 @@ import { CreateUser } from "../../Api/api";
         setuser(res.user)
        alert("loggedin succesfully");
         setform(res.user);
-        navigate("/allposts");
+        navigate("/loginpage");
         console.log("logedin succesfully");
         setform({
           emailid: "",
           password: "",
         });
-      } else {
-        console.log(res.error);
-      }
+      } 
+      
     } catch (error) {
       console.log(error);
     }
@@ -69,7 +68,7 @@ import { CreateUser } from "../../Api/api";
 
           <div className="input-box">
             <label>Email ID</label>
-            <input type="email" placeholder="Enter your email" name="emailid" value={form.emailid}
+            <input type="email" placeholder="Enter your email" name="emailid" value={form.emailid || ""}
             onChange={handlechange} />
           </div>
 

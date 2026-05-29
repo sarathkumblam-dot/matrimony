@@ -3,6 +3,7 @@ import React from "react";
 import "./Loginpage.css";
 import logo from "../assets/logo.png.jpeg"
 import { Link } from "react-router-dom";
+import { User } from 'lucide-react';
 function Home() {
   return (
     <div className="home-container">
@@ -17,9 +18,12 @@ function Home() {
           <li>Notifications</li>
           <li>Profile</li>
         </ul>
-        <Link to="/">
+        <div className="logout">
+        <Link to="/login">
         <button className="logout-btn">Logout</button>
         </Link>
+        <User className="nav-profile-font" size={32} />
+        </div>
       </nav>
 
       {/* Hero Section */}

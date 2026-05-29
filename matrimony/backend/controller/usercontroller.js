@@ -5,22 +5,55 @@ const jwt=require('jsonwebtoken')
 const { Error } = require('mongoose')
 
 const saltrounds=10
-const registeruser=async(req,res)=>{
-    const {name,emailid,password,gender}=req.body
+const registeruser = async (req, res) => {
+    const { name, emailid, password } = req.body;
     try {
-       const user=await User.findOne({emailid})
-       if(user){
-            return res.status(400).json({msg:"user already exists"})        
-       } 
-     const hashedpassword=await bcrypt.hash(password,saltrounds)
-     const userdata=await new User({name,emailid,password:hashedpassword,gender})
-     await userdata.save()
-     res.status(201).json({msg:"user created sucessfully",data:userdata})  
-    } catch (error) {
-     res.status(500).json({msg:"server error",e:error.message})
-    }
-}
+        // 1. Check if user already exists
+        const user = await User.findOne({ emailid });
+        if (user) {
+            return res.status(400).json({ msg: "user already exists" });
+        }
 
+        // 2. Hash password (Make sure saltrounds is defined, e.g., const saltrounds = 10)
+        const saltrounds = 10; 
+        const hashedpassword = await bcrypt.hash(password, saltrounds);
+
+        // 3. Create and save the new user
+        // Note: You can pass the object directly into User.create or use your approach, but remember to read from 'userdata' next!
+        const userdata = new User({ name, emailid, password: hashedpassword });
+        await userdata.save();
+
+        // 4. ✅ FIX: Use 'userdata' instead of 'user' to sign the token
+        const token = jwt.sign(
+            { id: userdata._id, name: userdata.name }, 
+            process.env.SECRET_KEY, 
+            { expiresIn: '1h' }
+        );
+
+        // 5. Setting cookie
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false, // Make sure your frontend is running on HTTPS if this is true!
+            sameSite: "lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+
+        // 6. Send success response
+        return res.status(201).json({
+            msg: "user created successfully",
+            data: userdata,
+            success: true,
+            user: {
+                name: userdata.name,
+                emailid: userdata.emailid
+            }
+        });
+
+    } catch (error) {
+        console.error("Registration Error:", error); // Check your terminal to see this logged!
+        return res.status(500).json({ msg: "server error", e: error.message });
+    }
+};
 
 // login
 
