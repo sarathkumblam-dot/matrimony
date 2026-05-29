@@ -25,7 +25,8 @@ const Login = ()=>{
       
       if(res.success){
         console.log("login successful");
-        navigate("/grid")
+         alert("Login Successfully");
+        navigate("/loginpage")
       }
       else{
         console.log("error");

@@ -25,6 +25,21 @@ export const LoginUser = async (postdata) => {
     return data;
 
 }
+// signup
+export const CreateUser = async (postdata) => {
+
+    const res = await fetch(`${baseurl}/user/createuser`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+
+        body: JSON.stringify(postdata)
+    })
+
+    return res.json()
+}
 
 export const deletepost = async(id)=>{
     const res = await fetch(`${baseurl}/profile/deleteprofile/${id}`,{
